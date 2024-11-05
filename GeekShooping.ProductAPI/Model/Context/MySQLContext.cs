@@ -1,5 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 namespace GeekShopping.ProductAPI.Model.Context
 {
@@ -11,6 +10,24 @@ namespace GeekShopping.ProductAPI.Model.Context
         { }
 
         public DbSet<Product> Products { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            for (int i = 1; i <= 10; i++)
+            {
+                modelBuilder.Entity<Product>().HasData(
+                    new Product
+                    {
+                        Id = i,
+                        Name = $"Registro {i}",
+                        Price = new decimal(80.1 + i),
+                        Description = $"Descrição registro {i}",
+                        CategoryName = $"Categoria registro {i}",
+                        ImageUrl = $"TesteURL registro {i}"
+                    }
+                );
+            }            
+        }
     }
 }
 //add-migration AddProductDataTableOnDB
