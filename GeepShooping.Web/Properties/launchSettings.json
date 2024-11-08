@@ -8,7 +8,7 @@
     }
   },
   "profiles": {
-    "GeepShooping.Web": {
+    "GeekShooping.Web": {
       "commandName": "Project",
       "dotnetRunMessages": true,
       "launchBrowser": true,
